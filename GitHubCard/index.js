@@ -60,7 +60,15 @@ let gitCard = (obj) => {
   let p6 = document.createElement('p');
   p6.textContent = `Bio: ${obj.bio}`;
   
-  
+  cardInfo.appendChild(h3);
+  cardInfo.appendChild(p1);
+  cardInfo.appendChild(p2);
+  cardInfo.appendChild(p3);
+  cardInfo.appendChild(p4);
+  cardInfo.appendChild(p5);
+  cardInfo.appendChild(p6);
+   
+  return card;
   };
 
 /* Step 4: Pass the data received from Github into your function, 
