@@ -6,14 +6,12 @@ let res = {};
 const cardItem = document.querySelector('.cards');
 
 axios.get('https://api.github.com/users/marissa-shaffer')
-.then(response => {
-  res = {...response.data };
-  console.log(res);
-  cardItem.append(userCard(response.data));
+.then((response) => {
+  cardItem.appendChild(gitCard(response.data));
 })
-.catch(err => {
-  console.log("There was an error: ", err);
-});
+.catch((error) => {
+  console.log(error);
+})
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -21,6 +19,49 @@ axios.get('https://api.github.com/users/marissa-shaffer')
 
    Skip to Step 3.
 */
+let gitCard = (obj) => {
+
+  let card = document.createElement('div');
+  card.classList.add('card');
+  
+  let img = document.createElement('img');
+  img.src = obj.avatar_url;
+  
+  let cardInfo = document.createElement('div');
+  cardInfo.classList.add('card-info');
+  
+  card.appendChild(img);
+  card.appendChild(cardInfo);
+  
+  let h3 = document.createElement('h3');
+  h3.classList.add('name');
+  h3.textContent = obj.name;
+  
+  let p1 = document.createElement('p');
+  p1.classList.add('username');
+  p1.textContent = obj.login;
+  
+  let p2 = document.createElement('p');
+  p2.textContent = `Location: ${obj.location}`;
+  
+  let p3 = document.createElement('p');
+  p3.textContent = 'Profile: ';
+  let a  = document.createElement('a');
+  a.setAttribute('href', `${obj.html_url}`);
+  a.textContent = obj.name;
+  p3.appendChild(a);
+  
+  let p4 = document.createElement('p');
+  p4.textContent = `Followers: ${obj.followers}`;
+  
+  let p5 = document.createElement('p');
+  p5.textContent = `Following: ${obj.following}`;
+  
+  let p6 = document.createElement('p');
+  p6.textContent = `Bio: ${obj.bio}`;
+  
+  
+  };
 
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
