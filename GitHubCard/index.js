@@ -2,7 +2,18 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+let res = {};
+const cardItem = document.querySelector('.cards');
+
 axios.get('https://api.github.com/users/marissa-shaffer')
+.then(response => {
+  res = {...response.data };
+  console.log(res);
+  cardItem.append(userCard(response.data));
+})
+.catch(err => {
+  console.log("There was an error: ", err);
+});
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
