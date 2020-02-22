@@ -85,7 +85,7 @@ let gitCard = (obj) => {
           user, and adding that card to the DOM.
 */
 
-const followersArray = ['tetondan','dustinmyers','justsml','luishrd','bigknell'];
+const followersArray = ['tetondan','dustinmyers','justsml','luishrd','bigknell', 'HeyMichelle', 'taylorpalmer', 'amberchunn', 'weinerjm14'];
 
 followersArray.forEach((item) => {
   axios.get(`https://api.github.com/users/${item}`)
